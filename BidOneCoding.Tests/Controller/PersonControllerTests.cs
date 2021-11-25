@@ -2,6 +2,7 @@
 using BidOneCoding.Models;
 using BidOneCoding.Respository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Moq;
 using System.Collections.Generic;
 using Xunit;
@@ -12,11 +13,13 @@ namespace BidOneCoding.Tests.Controller
     {
         private readonly Mock<IPersonRepository> _mockRepository;
         private readonly PersonController _personController;
+        private readonly Mock<ILogger<PersonController>> _mockLogger; 
 
         public PersonControllerTests()
         {
             _mockRepository = new Mock<IPersonRepository>();
-            _personController = new PersonController(_mockRepository.Object);
+            _mockLogger = new Mock<ILogger<PersonController>>();
+            _personController = new PersonController(_mockRepository.Object, _mockLogger.Object);
         }
 
         [Fact]

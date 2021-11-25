@@ -16,11 +16,13 @@ namespace BidOneCoding.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogInformation("HomeController: Index => page has been accessed");
             return View();
         }
 
         public IActionResult Privacy()
         {
+            _logger.LogInformation("HomeController: Privacy => page has been accessed");
             return View();
         }
 

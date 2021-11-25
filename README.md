@@ -7,10 +7,10 @@ Some of the assumptions made:
 - First name and last name length must be between 3-20
 
 Technology used:
-.NET 5.0 
-MVC Web application
-xUnit
-Moq
+-.NET 5.0 
+-MVC Web application
+-xUnit
+-Moq
 
 Sample test data is in wwwroot\data\people.json
 

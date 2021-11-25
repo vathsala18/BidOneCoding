@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<Person>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (Model.Any())
+{
+    <table style="width:50%">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Person p in Model)
+            {
+                <tr>
+                    <td>@p.FirstName</td>
+                    <td>@p.LastName</td>
+                    <td><a asp-action="Update" asp-route-firstname="@p.FirstName">Update</a></td>
+                    <td>
+                        <form asp-route-firstname="@p.FirstName" asp-action="Delete" method="post">
+                            <button asp-action="Delete" asp-route-firstname="@p.FirstName" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>  
+ }
+else
+{
+    <h3>No persons</h3>
+    <p>You do not have any persons yet. Add a new person by clicking the <b>Add a person</b> link below</p>
+}
+<p></p>
+<a asp-action="Create">Add a person</a>

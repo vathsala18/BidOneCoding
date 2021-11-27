@@ -16,9 +16,12 @@ namespace BidOneCoding.Respository
 
         public Person GetPerson(string firstName) => 
             GetAll().FirstOrDefault(x => x.FirstName.ToLower() == firstName.ToLower());
-        
-        public void UpdatePersonList(List<Person> person) =>
-            _fileOperations.Write(JsonSerializer.Serialize(person));
+
+        public void UpdatePersonList(List<Person> person)
+        {
+            var jsonOptions = new JsonSerializerOptions(){ WriteIndented= true};
+            _fileOperations.Write(JsonSerializer.Serialize(person, jsonOptions));
+        }
 
         public List<Person> CreatePerson(Person person)
         {
